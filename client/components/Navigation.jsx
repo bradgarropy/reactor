@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 
 // components
 import Weight from './Weight';
+import WeightForm from './WeightForm';
 
 
 const Navigation = () => (
@@ -31,6 +32,7 @@ const Navigation = () => (
         </nav>
 
         <Route exact path="/" component={Weight} />
+        <Route path="/add" component={WeightForm} />
 
     </div>
 

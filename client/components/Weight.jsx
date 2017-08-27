@@ -1,5 +1,6 @@
 // react
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // packages
 import axios from 'axios';
@@ -38,7 +39,9 @@ class Weight extends React.Component {
         return (
             <div className="container">
                 <h1>Weight</h1>
+
                 <br />
+
                 <table className="table table-bordered table-striped table-hover">
                     <tbody>
                         <tr>
@@ -52,8 +55,12 @@ class Weight extends React.Component {
                                 <td className="text-center">{weight.weight}</td>
                             </tr>),
                         )}
+
                     </tbody>
                 </table>
+
+                <Link to="/add">Add Weight</Link>
+
             </div>
         );
 
