@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const config = {
-    entry: './src/app.jsx',
+    entry: './client/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js',
@@ -28,7 +28,7 @@ const config = {
     },
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'src'),
+        contentBase: path.join(__dirname, 'client'),
         historyApiFallback: true,
     },
     plugins: [

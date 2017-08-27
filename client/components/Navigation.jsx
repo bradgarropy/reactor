@@ -3,11 +3,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
 // components
-import Welcome from './Welcome';
-import Register from './Register';
-import Login from './Login';
-import Forgot from './Forgot';
-import Todos from './Todos';
+import Weight from './Weight';
 
 
 const Navigation = () => (
@@ -34,11 +30,7 @@ const Navigation = () => (
             </div>
         </nav>
 
-        <Route exact path="/" component={Welcome} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/forgot" component={Forgot} />
-        <Route path="/todos" component={Todos} />
+        <Route exact path="/" component={Weight} />
 
     </div>
 
