@@ -3,10 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const config = {
-    entry: './client/app.jsx',
+    entry: './client/index.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
+        filename: 'index.js',
     },
     module: {
         rules: [
