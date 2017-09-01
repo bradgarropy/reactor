@@ -20,6 +20,7 @@ class Weight extends React.Component {
 
         this.state = {
             weights: [],
+            editing: null,
         };
 
         this.handleAdd = this.handleAdd.bind(this);
@@ -50,8 +51,8 @@ class Weight extends React.Component {
     handleAdd(newDate, newWeight) {
 
         const data = {
-            newDate,
-            newWeight,
+            date: newDate,
+            weight: newWeight,
         };
 
         createWeight(data).then(
@@ -62,6 +63,12 @@ class Weight extends React.Component {
                 this.setState({ weights });
 
             });
+
+    }
+
+    handleEdit(weight) {
+
+        this.setState({ editing: weight });
 
     }
 
@@ -77,12 +84,13 @@ class Weight extends React.Component {
 
                 <br />
 
-                <table className="table table-bordered table-striped table-hover">
+                <table className="table table-hover">
                     <tbody>
                         <tr>
                             <th className="text-center">Date</th>
                             <th className="text-center">Weight</th>
                             <th className="text-center">Delete</th>
+                            <th className="text-center">Edit</th>
                         </tr>
 
                         {this.state.weights.map(weight =>
@@ -90,8 +98,13 @@ class Weight extends React.Component {
                                 <td className="text-center">{moment(weight.date).utc().format('MM/DD/YYYY')}</td>
                                 <td className="text-center">{weight.weight}</td>
                                 <td className="text-center">
-                                    <button onClick={() => this.handleDelete(weight._id)}>
+                                    <button className="btn btn-default" onClick={() => this.handleDelete(weight._id)}>
                                         <span className="glyphicon glyphicon-trash text-danger" />
+                                    </button>
+                                </td>
+                                <td className="text-center">
+                                    <button className="btn btn-default" onClick={() => this.handleEdit(weight)}>
+                                        <span className="glyphicon glyphicon-edit text-info" />
                                     </button>
                                 </td>
                             </tr>),

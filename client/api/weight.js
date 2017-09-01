@@ -15,9 +15,7 @@ export function getWeights() {
 export function createWeight(data) {
 
     return axios.post('http://localhost:3000/api/weight', data)
-        .then(
-            response => response.data,
-        );
+        .then(response => response.data);
 
 }
 
