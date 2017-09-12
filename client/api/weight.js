@@ -12,6 +12,16 @@ export function getWeights() {
 }
 
 
+export function getWeight(id) {
+
+    return axios.get(`http://localhost:3000/api/weight/${id}`)
+        .then(
+            response => response.data,
+        );
+
+}
+
+
 export function createWeight(data) {
 
     return axios.post('http://localhost:3000/api/weight', data)

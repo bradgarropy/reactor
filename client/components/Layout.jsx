@@ -3,9 +3,9 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 // components
-import Weight from './Weight';
+import Weight from '../views/Weight';
 import Navigation from './Navigation';
-import WeightForm from './WeightForm';
+import EditWeight from '../views/EditWeight';
 
 
 const Layout = () => (
@@ -13,7 +13,7 @@ const Layout = () => (
     <div id="layout">
         <Route path="/" component={Navigation} />
         <Route exact path="/" component={Weight} />
-        <Route path="/add" component={WeightForm} />
+        <Route exact path="/edit/:id" component={EditWeight} />
     </div>
 
 );

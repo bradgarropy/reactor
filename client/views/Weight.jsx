@@ -2,11 +2,11 @@
 import React from 'react';
 
 // packages
-import moment from 'moment';
 import _ from 'lodash';
 
 // components
-import WeightForm from './WeightForm';
+import WeightForm from '../components/weight/WeightForm';
+import WeightEntry from '../components/weight/WeightEntry';
 
 // api
 import { getWeights, createWeight, deleteWeight } from '../api/weight';
@@ -24,6 +24,7 @@ class Weight extends React.Component {
         };
 
         this.handleAdd = this.handleAdd.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
     }
 
@@ -66,12 +67,6 @@ class Weight extends React.Component {
 
     }
 
-    handleEdit(weight) {
-
-        this.setState({ editing: weight });
-
-    }
-
     render() {
 
         return (
@@ -84,7 +79,7 @@ class Weight extends React.Component {
 
                 <br />
 
-                <table className="table table-hover">
+                <table className="table table-bordered table-striped table-hover">
                     <tbody>
                         <tr>
                             <th className="text-center">Date</th>
@@ -94,20 +89,11 @@ class Weight extends React.Component {
                         </tr>
 
                         {this.state.weights.map(weight =>
-                            (<tr key={weight._id}>
-                                <td className="text-center">{moment(weight.date).utc().format('MM/DD/YYYY')}</td>
-                                <td className="text-center">{weight.weight}</td>
-                                <td className="text-center">
-                                    <button className="btn btn-default" onClick={() => this.handleDelete(weight._id)}>
-                                        <span className="glyphicon glyphicon-trash text-danger" />
-                                    </button>
-                                </td>
-                                <td className="text-center">
-                                    <button className="btn btn-default" onClick={() => this.handleEdit(weight)}>
-                                        <span className="glyphicon glyphicon-edit text-info" />
-                                    </button>
-                                </td>
-                            </tr>),
+                            (<WeightEntry
+                                key={weight._id}
+                                weight={weight}
+                                delete={this.handleDelete}
+                            />),
                         )}
 
                     </tbody>
