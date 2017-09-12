@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 // packages
 import moment from 'moment';
 
+// components
+import DateInput from './DateInput';
+import NumberInput from './NumberInput';
+
 
 class WeightForm extends React.Component {
 
@@ -13,8 +17,8 @@ class WeightForm extends React.Component {
         super(props);
 
         this.state = {
-            date: '',
-            weight: '',
+            date: props.date,
+            weight: props.weight,
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -22,16 +26,20 @@ class WeightForm extends React.Component {
 
     }
 
+
     componentWillReceiveProps(nextprops) {
 
-        if (nextprops.date || nextprops.weight) {
+        if (nextprops.date) {
 
             this.setState({
                 date: moment(nextprops.date).utc().format('YYYY-MM-DD'),
-                weight: nextprops.weight,
             });
 
         }
+
+        this.setState({
+            weight: nextprops.weight,
+        });
 
     }
 
@@ -44,7 +52,9 @@ class WeightForm extends React.Component {
 
     onChange(event) {
 
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
 
     }
 
@@ -54,36 +64,19 @@ class WeightForm extends React.Component {
 
             <form onSubmit={this.onSubmit}>
 
-                <div className="form-group">
+                <DateInput
+                    label="Date"
+                    name="date"
+                    value={this.props.date}
+                    onChange={this.onChange}
+                />
 
-                    <label htmlFor="date">
-                        Date
-                    </label>
-
-                    <input
-                        className="form-control"
-                        name="date"
-                        type="date"
-                        value={this.state.date}
-                        onChange={this.onChange}
-                    />
-                </div>
-
-                <div className="form-group">
-
-                    <label htmlFor="weight">
-                        Weight
-                    </label>
-
-                    <input
-                        className="form-control"
-                        name="weight"
-                        type="number"
-                        value={this.state.weight}
-                        onChange={this.onChange}
-                    />
-
-                </div>
+                <NumberInput
+                    label="Weight"
+                    name="weight"
+                    value={this.props.weight}
+                    onChange={this.onChange}
+                />
 
                 <button className="btn btn-default" type="submit">Submit</button>
 
@@ -98,6 +91,14 @@ class WeightForm extends React.Component {
 
 WeightForm.propTypes = {
     add: PropTypes.func.isRequired,
+    date: PropTypes.string,
+    weight: PropTypes.number,
+};
+
+
+WeightForm.defaultProps = {
+    date: undefined,
+    weight: undefined,
 };
 
 
