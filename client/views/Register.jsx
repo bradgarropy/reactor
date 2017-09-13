@@ -4,12 +4,28 @@ import React from 'react';
 // components
 import RegisterForm from '../components/user/RegisterForm';
 
+// api
+import { createUser } from '../api/user';
+
 
 class Register extends React.Component {
 
-    onSubmit(event) {
+    constructor(props) {
 
-        console.log('onsubmit');
+        super(props);
+
+        this.onSubmit = this.onSubmit.bind(this);
+
+    }
+
+    onSubmit(data) {
+
+        createUser(data).then(
+            () => {
+
+                this.props.history.push('/');
+
+            });
 
     }
 

@@ -30,7 +30,7 @@ class RegisterForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state.date, this.state.weight);
+        this.props.submit(this.state);
 
     }
 
