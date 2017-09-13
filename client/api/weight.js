@@ -30,6 +30,16 @@ export function createWeight(data) {
 }
 
 
+export function updateWeight(id, data) {
+
+    return axios.put(`http://localhost:3000/api/weight/${id}`, data)
+        .then(
+            response => response.data,
+        );
+
+}
+
+
 export function deleteWeight(id) {
 
     return axios.delete(`http://localhost:3000/api/weight/${id}`)

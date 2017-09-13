@@ -75,7 +75,7 @@ class Weight extends React.Component {
 
                 <br />
 
-                <WeightForm add={this.handleAdd} />
+                <WeightForm submit={this.handleAdd} />
 
                 <br />
 

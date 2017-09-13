@@ -46,15 +46,13 @@ class WeightForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.add(this.state.date, this.state.weight);
+        this.props.submit(this.state.date, this.state.weight);
 
     }
 
     onChange(event) {
 
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
+        this.setState({ [event.target.name]: event.target.value });
 
     }
 
@@ -67,14 +65,14 @@ class WeightForm extends React.Component {
                 <DateInput
                     label="Date"
                     name="date"
-                    value={this.props.date}
+                    value={this.state.date}
                     onChange={this.onChange}
                 />
 
                 <NumberInput
                     label="Weight"
                     name="weight"
-                    value={this.props.weight}
+                    value={this.state.weight}
                     onChange={this.onChange}
                 />
 
@@ -90,7 +88,7 @@ class WeightForm extends React.Component {
 
 
 WeightForm.propTypes = {
-    add: PropTypes.func.isRequired,
+    submit: PropTypes.func.isRequired,
     date: PropTypes.string,
     weight: PropTypes.number,
 };

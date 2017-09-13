@@ -5,7 +5,7 @@ import React from 'react';
 import WeightForm from '../components/weight/WeightForm';
 
 // api
-import { getWeight, createWeight } from '../api/weight';
+import { getWeight, updateWeight } from '../api/weight';
 
 
 class EditWeight extends React.Component {
@@ -18,7 +18,7 @@ class EditWeight extends React.Component {
             weight: '',
         };
 
-        this.handleAdd = this.handleAdd.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
 
     }
 
@@ -31,19 +31,18 @@ class EditWeight extends React.Component {
     }
 
 
-    handleAdd(newDate, newWeight) {
+    handleUpdate(newDate, newWeight) {
 
         const data = {
             date: newDate,
             weight: newWeight,
         };
 
-        createWeight(data).then(
+        updateWeight(this.state.weight._id, data).then(
             (weight) => {
 
-                const weights = this.state.weights.slice();
-                weights.push(weight);
-                this.setState({ weights });
+                this.setState({ weight });
+                this.props.history.push('/weight');
 
             });
 
@@ -60,7 +59,7 @@ class EditWeight extends React.Component {
                 <WeightForm
                     date={this.state.weight.date}
                     weight={this.state.weight.weight}
-                    add={this.handleAdd}
+                    submit={this.handleUpdate}
                 />
 
             </div>
