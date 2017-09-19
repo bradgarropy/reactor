@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // components
-import DateInput from './DateInput';
-import NumberInput from './NumberInput';
+import Input from '../common/Input';
 
 
 class WeightForm extends React.Component {
@@ -62,15 +61,17 @@ class WeightForm extends React.Component {
 
             <form onSubmit={this.onSubmit}>
 
-                <DateInput
+                <Input
                     label="Date"
+                    type="date"
                     name="date"
                     value={this.state.date}
                     onChange={this.onChange}
                 />
 
-                <NumberInput
+                <Input
                     label="Weight"
+                    type="number"
                     name="weight"
                     value={this.state.weight}
                     onChange={this.onChange}

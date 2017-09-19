@@ -3,9 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import TextInput from './TextInput';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
+import Input from '../common/Input';
 
 
 class RegisterForm extends React.Component {
@@ -16,6 +14,7 @@ class RegisterForm extends React.Component {
 
         this.state = {
             first_name: '',
+            middle_name: '',
             last_name: '',
             email: '',
             password: '',
@@ -46,40 +45,45 @@ class RegisterForm extends React.Component {
 
             <form onSubmit={this.onSubmit}>
 
-                <TextInput
+                <Input
                     label="First Name"
+                    type="text"
                     name="first_name"
                     placeholder="First Name"
                     value={this.state.first_name}
                     onChange={this.onChange}
                 />
 
-                <TextInput
+                <Input
                     label="Last Name"
+                    type="text"
                     name="last_name"
                     placeholder="Last Name"
                     value={this.state.last_name}
                     onChange={this.onChange}
                 />
 
-                <EmailInput
+                <Input
                     label="Email"
+                    type="email"
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
                     onChange={this.onChange}
                 />
 
-                <PasswordInput
+                <Input
                     label="Password"
+                    type="password"
                     name="password"
                     placeholder="Password"
                     value={this.state.password}
                     onChange={this.onChange}
                 />
 
-                <PasswordInput
+                <Input
                     label="Confirm Password"
+                    type="password"
                     name="confirmation"
                     placeholder="Confirm Password"
                     value={this.state.confirmation}
