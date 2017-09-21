@@ -3,24 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import TextInput from '../common/TextInput';
 import EmailInput from '../common/EmailInput';
 import PasswordInput from '../common/PasswordInput';
 
 
-class RegisterForm extends React.Component {
+class LoginForm extends React.Component {
 
     constructor(props) {
 
         super(props);
 
         this.state = {
-            first_name: '',
-            middle_name: '',
-            last_name: '',
             email: '',
             password: '',
-            confirmation: '',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -47,22 +42,6 @@ class RegisterForm extends React.Component {
 
             <form onSubmit={this.onSubmit}>
 
-                <TextInput
-                    label="First Name"
-                    name="first_name"
-                    placeholder="First Name"
-                    value={this.state.first_name}
-                    onChange={this.onChange}
-                />
-
-                <TextInput
-                    label="Last Name"
-                    name="last_name"
-                    placeholder="Last Name"
-                    value={this.state.last_name}
-                    onChange={this.onChange}
-                />
-
                 <EmailInput
                     label="Email"
                     name="email"
@@ -79,14 +58,6 @@ class RegisterForm extends React.Component {
                     onChange={this.onChange}
                 />
 
-                <PasswordInput
-                    label="Confirm Password"
-                    name="confirmation"
-                    placeholder="Confirm Password"
-                    value={this.state.confirmation}
-                    onChange={this.onChange}
-                />
-
                 <button className="btn btn-default" type="submit">Submit</button>
 
             </form>
@@ -98,14 +69,14 @@ class RegisterForm extends React.Component {
 }
 
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
     submit: PropTypes.func.isRequired,
 };
 
 
-RegisterForm.defaultProps = {
+LoginForm.defaultProps = {
 
 };
 
 
-export default RegisterForm;
+export default LoginForm;

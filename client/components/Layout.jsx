@@ -3,6 +3,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 // components
+import Login from '../views/Login';
 import Weight from '../views/Weight';
 import Welcome from '../views/Welcome';
 import Register from '../views/Register';
@@ -15,6 +16,7 @@ const Layout = () => (
     <div id="layout">
         <Route path="/" component={Navigation} />
         <Route exact path="/" component={Welcome} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/weight" component={Weight} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/edit/:id" component={EditWeight} />
