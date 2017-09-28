@@ -1,6 +1,9 @@
 // react
 import React from 'react';
 
+// packages
+import axios from 'axios';
+
 // components
 import LoginForm from '../components/user/LoginForm';
 
@@ -24,6 +27,7 @@ class Login extends React.Component {
             (response) => {
 
                 localStorage.setItem('token', response.token);
+                axios.defaults.headers.common.Authorization = `Bearer ${response.token}`;
                 this.props.history.push('/');
 
             });

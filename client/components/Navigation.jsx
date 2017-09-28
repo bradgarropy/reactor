@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// packages
+import axios from 'axios';
+
 // utils
 import { isAuthenticated } from '../utils/authentication';
 
@@ -20,6 +23,7 @@ class Navigation extends React.Component {
     handleLogout() {
 
         localStorage.removeItem('token');
+        delete axios.defaults.headers.common.Authorization;
         this.props.history.push('/');
 
     }
