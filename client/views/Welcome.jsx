@@ -2,20 +2,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// utils
+import { isAuthenticated, userInfo } from '../utils/authentication';
 
-const Welcome = () => (
 
-    <div className="container">
+class Welcome extends React.Component {
 
-        <h1>Welcome.</h1>
+    render() {
 
-        <h4>
-            Please <Link to="/register">register</Link> or <Link to="/login">login</Link>.
-        </h4>
+        const user = userInfo();
 
-    </div>
+        const authenticated = (
 
-);
+            <div className="container">
+
+                <h1>Welcome, {user.first_name}.</h1>
+
+            </div>
+        );
+
+
+        const unauthenticated = (
+
+            <div className="container">
+
+                <h1>Welcome.</h1>
+
+                <h4>
+                    Please <Link to="/register">register</Link> or <Link to="/login">login</Link>.
+                </h4>
+
+            </div>
+
+        );
+
+        return (
+            isAuthenticated() ? authenticated : unauthenticated
+        );
+
+    }
+
+}
 
 
 export default Welcome;
