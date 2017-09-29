@@ -31,41 +31,67 @@ class Navigation extends React.Component {
     render() {
 
         const authenticated = (
-            <ul className="nav navbar-nav navbar-right">
-                <li>
-                    <a role="button" tabIndex="0" onClick={this.handleLogout}>Logout</a>
-                </li>
-            </ul>
+            <div className="container-fluid">
+
+                <ul className="nav navbar-nav">
+                    <li>
+                        <Link to="/">
+                            <span className="glyphicon glyphicon-home" />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/weight">
+                            <span className="glyphicon glyphicon-scale" />
+                        </Link>
+                    </li>
+                </ul>
+
+                <ul className="nav navbar-nav navbar-right">
+                    <li className="dropdown">
+                        <a role="button" className="dropdown-toggle" data-toggle="dropdown">
+                            Brad <span className="glyphicon glyphicon-user" />
+                            <span className="caret" />
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <a role="button" tabIndex="0" onClick={this.handleLogout}>Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
         );
 
 
         const unauthenticated = (
-            <ul className="nav navbar-nav navbar-right">
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
-                <li>
-                    <Link to="/login">Login</Link>
-                </li>
-            </ul>
+            <div className="container-fluid">
+
+                <ul className="nav navbar-nav">
+                    <li>
+                        <Link to="/">
+                            <span className="glyphicon glyphicon-home" />
+                        </Link>
+                    </li>
+                </ul>
+
+                <ul className="nav navbar-nav navbar-right">
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                </ul>
+
+            </div>
         );
 
         return (
             <div id="navigation">
 
                 <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <ul className="nav navbar-nav">
-                            <li>
-                                <Link to="/">
-                                    <span className="glyphicon glyphicon-home" />
-                                </Link>
-                            </li>
-                        </ul>
-
-                        {isAuthenticated() ? authenticated : unauthenticated}
-
-                    </div>
+                    {isAuthenticated() ? authenticated : unauthenticated}
                 </nav>
 
             </div>
