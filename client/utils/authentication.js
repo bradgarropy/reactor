@@ -32,3 +32,33 @@ export function userInfo() {
     return user;
 
 }
+
+
+export function userId() {
+
+    const user = userInfo();
+
+    if (!user) {
+
+        return undefined;
+
+    }
+
+    return user.id;
+
+}
+
+
+export function userFirstName() {
+
+    const user = userInfo();
+
+    if (!user) {
+
+        return undefined;
+
+    }
+
+    return user.first_name;
+
+}

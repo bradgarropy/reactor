@@ -20,7 +20,6 @@ class Weight extends React.Component {
 
         this.state = {
             weights: [],
-            editing: null,
         };
 
         this.handleAdd = this.handleAdd.bind(this);

@@ -5,25 +5,32 @@ import PropTypes from 'prop-types';
 // components
 import TextInput from '../common/TextInput';
 import EmailInput from '../common/EmailInput';
-import PasswordInput from '../common/PasswordInput';
 
 
-class RegisterForm extends React.Component {
+class ProfileForm extends React.Component {
 
     constructor(props) {
 
         super(props);
 
         this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
-            confirmation: '',
+            first_name: props.first_name,
+            last_name: props.last_name,
+            email: props.email,
         };
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+
+    }
+
+    componentWillReceiveProps(props) {
+
+        this.setState({
+            first_name: props.first_name,
+            last_name: props.last_name,
+            email: props.email,
+        });
 
     }
 
@@ -70,22 +77,6 @@ class RegisterForm extends React.Component {
                     onChange={this.onChange}
                 />
 
-                <PasswordInput
-                    label="Password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                />
-
-                <PasswordInput
-                    label="Confirm Password"
-                    name="confirmation"
-                    placeholder="Confirm Password"
-                    value={this.state.confirmation}
-                    onChange={this.onChange}
-                />
-
                 <button className="btn btn-default" type="submit">Submit</button>
 
             </form>
@@ -97,14 +88,19 @@ class RegisterForm extends React.Component {
 }
 
 
-RegisterForm.propTypes = {
+ProfileForm.propTypes = {
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    email: PropTypes.string,
     submit: PropTypes.func.isRequired,
 };
 
 
-RegisterForm.defaultProps = {
-
+ProfileForm.defaultProps = {
+    first_name: undefined,
+    last_name: undefined,
+    email: undefined,
 };
 
 
-export default RegisterForm;
+export default ProfileForm;

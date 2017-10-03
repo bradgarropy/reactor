@@ -26,18 +26,11 @@ class WeightForm extends React.Component {
     }
 
 
-    componentWillReceiveProps(nextprops) {
-
-        if (nextprops.date) {
-
-            this.setState({
-                date: moment(nextprops.date).utc().format('YYYY-MM-DD'),
-            });
-
-        }
+    componentWillReceiveProps(props) {
 
         this.setState({
-            weight: nextprops.weight,
+            date: moment(props.date).utc().format('YYYY-MM-DD'),
+            weight: props.weight,
         });
 
     }
@@ -89,9 +82,9 @@ class WeightForm extends React.Component {
 
 
 WeightForm.propTypes = {
-    submit: PropTypes.func.isRequired,
     date: PropTypes.string,
     weight: PropTypes.number,
+    submit: PropTypes.func.isRequired,
 };
 
 

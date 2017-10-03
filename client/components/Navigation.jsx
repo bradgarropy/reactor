@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // utils
-import { isAuthenticated, userInfo } from '../utils/authentication';
+import { isAuthenticated, userFirstName } from '../utils/authentication';
 
 
 class Navigation extends React.Component {
@@ -30,7 +30,7 @@ class Navigation extends React.Component {
 
     render() {
 
-        const user = userInfo();
+        const firstName = userFirstName();
 
         const authenticated = (
             <div className="container-fluid">
@@ -51,10 +51,13 @@ class Navigation extends React.Component {
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
                         <a role="button" className="dropdown-toggle" data-toggle="dropdown">
-                            {user.first_name} <span className="glyphicon glyphicon-user" />
+                            {firstName} <span className="glyphicon glyphicon-user" />
                             <span className="caret" />
                         </a>
                         <ul className="dropdown-menu">
+                            <li>
+                                <Link to="/profile">Profile</Link>
+                            </li>
                             <li>
                                 <a role="button" tabIndex="0" onClick={this.handleLogout}>Logout</a>
                             </li>

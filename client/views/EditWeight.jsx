@@ -18,7 +18,7 @@ class EditWeight extends React.Component {
             weight: '',
         };
 
-        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleUpdate = this.onSubmit.bind(this);
 
     }
 
@@ -31,7 +31,7 @@ class EditWeight extends React.Component {
     }
 
 
-    handleUpdate(newDate, newWeight) {
+    onSubmit(newDate, newWeight) {
 
         const data = {
             date: newDate,
@@ -59,7 +59,7 @@ class EditWeight extends React.Component {
                 <WeightForm
                     date={this.state.weight.date}
                     weight={this.state.weight.weight}
-                    submit={this.handleUpdate}
+                    submit={this.onSubmit}
                 />
 
             </div>

@@ -2,8 +2,19 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+// packages
+import axios from 'axios';
+
 // components
 import App from './components/App';
 
+
+const token = localStorage.getItem('token');
+
+if (token) {
+
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+}
 
 render(<App />, document.getElementById('app'));
