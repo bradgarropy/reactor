@@ -1,6 +1,7 @@
 // react
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // components
 import TextInput from '../common/TextInput';
@@ -78,6 +79,10 @@ class ProfileForm extends React.Component {
                 />
 
                 <button className="btn btn-default" type="submit">Submit</button>
+
+                <div className="pull-right">
+                    <Link to="/password">Password Settings</Link>
+                </div>
 
             </form>
 

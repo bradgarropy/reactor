@@ -1,14 +1,12 @@
 // react
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // components
 import EmailInput from '../common/EmailInput';
-import PasswordInput from '../common/PasswordInput';
 
 
-class LoginForm extends React.Component {
+class ForgotForm extends React.Component {
 
     constructor(props) {
 
@@ -16,7 +14,6 @@ class LoginForm extends React.Component {
 
         this.state = {
             email: '',
-            password: '',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -51,19 +48,7 @@ class LoginForm extends React.Component {
                     onChange={this.onChange}
                 />
 
-                <PasswordInput
-                    label="Password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                />
-
                 <button className="btn btn-default" type="submit">Submit</button>
-
-                <div className="pull-right">
-                    <Link to="/forgot">Forgot Password?</Link>
-                </div>
 
             </form>
 
@@ -74,14 +59,14 @@ class LoginForm extends React.Component {
 }
 
 
-LoginForm.propTypes = {
+ForgotForm.propTypes = {
     submit: PropTypes.func.isRequired,
 };
 
 
-LoginForm.defaultProps = {
+ForgotForm.defaultProps = {
 
 };
 
 
-export default LoginForm;
+export default ForgotForm;

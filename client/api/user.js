@@ -38,13 +38,3 @@ export function updateUser(id, data) {
         );
 
 }
-
-
-export function deleteUser(id) {
-
-    return axios.delete(`http://localhost:3000/api/user/${id}`)
-        .then(
-            response => response.data,
-        );
-
-}

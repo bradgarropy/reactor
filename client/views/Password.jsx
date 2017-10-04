@@ -1,17 +1,14 @@
 // react
 import React from 'react';
 
-// packages
-import axios from 'axios';
-
 // components
-import LoginForm from '../components/user/LoginForm';
+import PasswordForm from '../components/user/PasswordForm';
 
 // api
-import login from '../api/login';
+import changePassword from '../api/password';
 
 
-class Login extends React.Component {
+class Password extends React.Component {
 
     constructor(props) {
 
@@ -23,11 +20,12 @@ class Login extends React.Component {
 
     onSubmit(data) {
 
-        login(data).then(
+        console.log('password');
+
+        changePassword(data).then(
             (response) => {
 
-                localStorage.setItem('token', response.token);
-                axios.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+                console.log(response);
                 this.props.history.push('/');
 
             },
@@ -39,11 +37,11 @@ class Login extends React.Component {
 
         return (
             <div className="container">
-                <h1>Login</h1>
+                <h1>Password</h1>
 
                 <br />
 
-                <LoginForm
+                <PasswordForm
                     submit={this.onSubmit}
                 />
 
@@ -55,4 +53,4 @@ class Login extends React.Component {
 }
 
 
-export default Login;
+export default Password;

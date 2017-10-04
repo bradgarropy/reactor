@@ -1,22 +1,21 @@
 // react
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // components
-import EmailInput from '../common/EmailInput';
 import PasswordInput from '../common/PasswordInput';
 
 
-class LoginForm extends React.Component {
+class PasswordForm extends React.Component {
 
     constructor(props) {
 
         super(props);
 
         this.state = {
-            email: '',
-            password: '',
+            current_password: '',
+            new_password: '',
+            confirmation: '',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -43,27 +42,28 @@ class LoginForm extends React.Component {
 
             <form onSubmit={this.onSubmit}>
 
-                <EmailInput
-                    label="Email"
-                    name="email"
-                    placeholder="Email"
-                    value={this.state.email}
+                <PasswordInput
+                    label="Current Password"
+                    name="current_password"
+                    value={this.state.current_password}
                     onChange={this.onChange}
                 />
 
                 <PasswordInput
-                    label="Password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
+                    label="New Password"
+                    name="new_password"
+                    value={this.state.new_password}
                     onChange={this.onChange}
                 />
 
-                <button className="btn btn-default" type="submit">Submit</button>
+                <PasswordInput
+                    label="Confirm Password"
+                    name="confirmation"
+                    value={this.state.confirmation}
+                    onChange={this.onChange}
+                />
 
-                <div className="pull-right">
-                    <Link to="/forgot">Forgot Password?</Link>
-                </div>
+                <button className="btn btn-default" type="submit">Update</button>
 
             </form>
 
@@ -74,14 +74,14 @@ class LoginForm extends React.Component {
 }
 
 
-LoginForm.propTypes = {
+PasswordForm.propTypes = {
     submit: PropTypes.func.isRequired,
 };
 
 
-LoginForm.defaultProps = {
+PasswordForm.defaultProps = {
 
 };
 
 
-export default LoginForm;
+export default PasswordForm;
