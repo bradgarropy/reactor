@@ -2,13 +2,13 @@
 import React from 'react';
 
 // components
-import PasswordForm from '../components/user/PasswordForm';
+import ResetForm from '../components/user/ResetForm';
 
 // api
-import changePassword from '../api/password';
+import resetPassword from '../api/reset';
 
 
-class Password extends React.Component {
+class Reset extends React.Component {
 
     constructor(props) {
 
@@ -20,7 +20,9 @@ class Password extends React.Component {
 
     onSubmit(data) {
 
-        changePassword(data).then(
+        const token = this.props.match.params.token;
+
+        resetPassword(token, data).then(
             (response) => {
 
                 this.props.history.push('/');
@@ -34,11 +36,11 @@ class Password extends React.Component {
 
         return (
             <div className="container">
-                <h1>Password</h1>
+                <h1>Reset</h1>
 
                 <br />
 
-                <PasswordForm
+                <ResetForm
                     submit={this.onSubmit}
                 />
 
@@ -50,4 +52,4 @@ class Password extends React.Component {
 }
 
 
-export default Password;
+export default Reset;

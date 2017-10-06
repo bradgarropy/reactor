@@ -8,7 +8,7 @@ import axios from 'axios';
 import ForgotForm from '../components/user/ForgotForm';
 
 // api
-import user from '../api/user';
+import forgot from '../api/forgot';
 
 
 class Forgot extends React.Component {
@@ -21,9 +21,15 @@ class Forgot extends React.Component {
 
     }
 
-    onSubmit() {
+    onSubmit(data) {
 
-        console.log('forgot');
+        forgot(data).then(
+            () => {
+
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
