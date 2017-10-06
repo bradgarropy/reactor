@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 
 // components
-import App from './components/App';
+import App from './components/site/App';
 
 
 const token = localStorage.getItem('token');

@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 // packages
 import axios from 'axios';
 
+// components
+import Banner from './Banner';
+
 // utils
-import { isAuthenticated, userFirstName } from '../utils/authentication';
+import { isAuthenticated, userFirstName } from '../../utils/authentication';
 
 
 class Navigation extends React.Component {

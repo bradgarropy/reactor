@@ -2,13 +2,13 @@
 import React from 'react';
 
 // components
-import ForgotForm from '../components/user/ForgotForm';
+import FeedbackForm from '../components/user/FeedbackForm';
 
 // api
-import forgot from '../api/forgot';
+import feedback from '../api/feedback';
 
 
-class Forgot extends React.Component {
+class Feedback extends React.Component {
 
     constructor(props) {
 
@@ -20,7 +20,7 @@ class Forgot extends React.Component {
 
     onSubmit(data) {
 
-        forgot(data).then(
+        feedback(data).then(
             () => {
 
                 this.props.history.push('/');
@@ -34,11 +34,11 @@ class Forgot extends React.Component {
 
         return (
             <div className="container">
-                <h1>Forgot</h1>
+                <h1>Feedback</h1>
 
                 <br />
 
-                <ForgotForm
+                <FeedbackForm
                     submit={this.onSubmit}
                 />
 
@@ -50,4 +50,4 @@ class Forgot extends React.Component {
 }
 
 
-export default Forgot;
+export default Feedback;
