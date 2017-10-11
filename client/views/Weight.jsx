@@ -22,7 +22,7 @@ class Weight extends React.Component {
             weights: [],
         };
 
-        this.handleAdd = this.handleAdd.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
     }
@@ -32,6 +32,19 @@ class Weight extends React.Component {
         getWeights().then(
             weights => this.setState({ weights }),
         );
+
+    }
+
+    onSubmit(data) {
+
+        createWeight(data).then(
+            (weight) => {
+
+                const weights = this.state.weights.slice();
+                weights.push(weight);
+                this.setState({ weights });
+
+            });
 
     }
 
@@ -48,24 +61,6 @@ class Weight extends React.Component {
 
     }
 
-    handleAdd(newDate, newWeight) {
-
-        const data = {
-            date: newDate,
-            weight: newWeight,
-        };
-
-        createWeight(data).then(
-            (weight) => {
-
-                const weights = this.state.weights.slice();
-                weights.push(weight);
-                this.setState({ weights });
-
-            });
-
-    }
-
     render() {
 
         return (
@@ -74,7 +69,7 @@ class Weight extends React.Component {
 
                 <br />
 
-                <WeightForm submit={this.handleAdd} />
+                <WeightForm submit={this.onSubmit} />
 
                 <br />
 

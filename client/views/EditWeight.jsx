@@ -18,25 +18,25 @@ class EditWeight extends React.Component {
             weight: '',
         };
 
-        this.handleUpdate = this.onSubmit.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
     }
 
     componentDidMount() {
 
         getWeight(this.props.match.params.id).then(
-            weight => this.setState({ weight }),
+            (weight) => {
+
+                console.log(weight);
+                this.setState({ weight });
+
+            },
         );
 
     }
 
 
-    onSubmit(newDate, newWeight) {
-
-        const data = {
-            date: newDate,
-            weight: newWeight,
-        };
+    onSubmit(data) {
 
         updateWeight(this.state.weight._id, data).then(
             (weight) => {

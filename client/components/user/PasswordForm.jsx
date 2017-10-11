@@ -1,9 +1,12 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // components
 import PasswordInput from '../common/PasswordInput';
+
+// api
+import changePassword from '../../api/password';
 
 
 class PasswordForm extends React.Component {
@@ -26,7 +29,15 @@ class PasswordForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        changePassword(this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -75,7 +86,7 @@ class PasswordForm extends React.Component {
 
 
 PasswordForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -84,4 +95,4 @@ PasswordForm.defaultProps = {
 };
 
 
-export default PasswordForm;
+export default withRouter(PasswordForm);

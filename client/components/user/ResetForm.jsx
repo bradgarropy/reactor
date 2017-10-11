@@ -1,9 +1,12 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // components
 import PasswordInput from '../common/PasswordInput';
+
+// api
+import resetPassword from '../../api/reset';
 
 
 class ResetForm extends React.Component {
@@ -25,7 +28,17 @@ class ResetForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        const token = this.props.match.params.token;
+
+        resetPassword(token, this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -67,7 +80,7 @@ class ResetForm extends React.Component {
 
 
 ResetForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -76,4 +89,4 @@ ResetForm.defaultProps = {
 };
 
 
-export default ResetForm;
+export default withRouter(ResetForm);

@@ -1,11 +1,16 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+// packages
+import axios from 'axios';
 
 // components
 import EmailInput from '../common/EmailInput';
 import PasswordInput from '../common/PasswordInput';
+
+// api
+import login from '../../api/login';
 
 
 class LoginForm extends React.Component {
@@ -27,7 +32,16 @@ class LoginForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        login(this.state).then(
+            (response) => {
+
+                localStorage.setItem('token', response.token);
+                axios.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -75,7 +89,7 @@ class LoginForm extends React.Component {
 
 
 LoginForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -84,4 +98,4 @@ LoginForm.defaultProps = {
 };
 
 
-export default LoginForm;
+export default withRouter(LoginForm);

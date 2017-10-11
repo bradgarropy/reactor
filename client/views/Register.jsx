@@ -4,49 +4,19 @@ import React from 'react';
 // components
 import RegisterForm from '../components/user/RegisterForm';
 
-// api
-import { createUser } from '../api/user';
 
+const Register = () => (
 
-class Register extends React.Component {
+    <div className="container">
+        <h1>Register</h1>
 
-    constructor(props) {
+        <br />
 
-        super(props);
+        <RegisterForm />
 
-        this.onSubmit = this.onSubmit.bind(this);
+    </div>
 
-    }
-
-    onSubmit(data) {
-
-        createUser(data).then(
-            () => {
-
-                this.props.history.push('/');
-
-            });
-
-    }
-
-    render() {
-
-        return (
-            <div className="container">
-                <h1>Register</h1>
-
-                <br />
-
-                <RegisterForm
-                    submit={this.onSubmit}
-                />
-
-            </div>
-        );
-
-    }
-
-}
+);
 
 
 export default Register;

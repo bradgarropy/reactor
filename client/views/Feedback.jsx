@@ -4,50 +4,19 @@ import React from 'react';
 // components
 import FeedbackForm from '../components/user/FeedbackForm';
 
-// api
-import feedback from '../api/feedback';
 
+const Feedback = () => (
 
-class Feedback extends React.Component {
+    <div className="container">
+        <h1>Feedback</h1>
 
-    constructor(props) {
+        <br />
 
-        super(props);
+        <FeedbackForm />
 
-        this.onSubmit = this.onSubmit.bind(this);
+    </div>
 
-    }
-
-    onSubmit(data) {
-
-        feedback(data).then(
-            () => {
-
-                this.props.history.push('/');
-
-            },
-        );
-
-    }
-
-    render() {
-
-        return (
-            <div className="container">
-                <h1>Feedback</h1>
-
-                <br />
-
-                <FeedbackForm
-                    submit={this.onSubmit}
-                />
-
-            </div>
-        );
-
-    }
-
-}
+);
 
 
 export default Feedback;

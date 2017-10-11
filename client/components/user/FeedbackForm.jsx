@@ -1,10 +1,13 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // components
 import EmailInput from '../common/EmailInput';
 import TextArea from '../common/TextArea';
+
+// api
+import feedback from '../../api/feedback';
 
 
 class FeedbackForm extends React.Component {
@@ -26,7 +29,15 @@ class FeedbackForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        feedback(this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -71,7 +82,7 @@ class FeedbackForm extends React.Component {
 
 
 FeedbackForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -80,4 +91,4 @@ FeedbackForm.defaultProps = {
 };
 
 
-export default FeedbackForm;
+export default withRouter(FeedbackForm);

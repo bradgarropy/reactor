@@ -1,11 +1,16 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // components
 import TextInput from '../common/TextInput';
 import EmailInput from '../common/EmailInput';
+
+// api
+import { getUser, updateUser } from '../../api/user';
+
+// utils
+import { userId } from '../../utils/authentication';
 
 
 class ProfileForm extends React.Component {
@@ -15,9 +20,9 @@ class ProfileForm extends React.Component {
         super(props);
 
         this.state = {
-            first_name: props.first_name,
-            last_name: props.last_name,
-            email: props.email,
+            first_name: '',
+            last_name: '',
+            email: '',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,20 +30,34 @@ class ProfileForm extends React.Component {
 
     }
 
-    componentWillReceiveProps(props) {
+    componentDidMount() {
 
-        this.setState({
-            first_name: props.first_name,
-            last_name: props.last_name,
-            email: props.email,
-        });
+        const id = userId();
+
+        getUser(id).then(
+            user => this.setState({
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+            }),
+        );
 
     }
 
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        const id = userId();
+
+        updateUser(id, this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -94,18 +113,13 @@ class ProfileForm extends React.Component {
 
 
 ProfileForm.propTypes = {
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
-    email: PropTypes.string,
-    submit: PropTypes.func.isRequired,
+
 };
 
 
 ProfileForm.defaultProps = {
-    first_name: undefined,
-    last_name: undefined,
-    email: undefined,
+
 };
 
 
-export default ProfileForm;
+export default withRouter(ProfileForm);

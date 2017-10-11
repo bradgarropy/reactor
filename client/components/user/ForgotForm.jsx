@@ -1,9 +1,12 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // components
 import EmailInput from '../common/EmailInput';
+
+// api
+import forgot from '../../api/forgot';
 
 
 class ForgotForm extends React.Component {
@@ -24,7 +27,15 @@ class ForgotForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        forgot(this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -60,7 +71,7 @@ class ForgotForm extends React.Component {
 
 
 ForgotForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -69,4 +80,4 @@ ForgotForm.defaultProps = {
 };
 
 
-export default ForgotForm;
+export default withRouter(ForgotForm);

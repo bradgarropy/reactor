@@ -4,50 +4,19 @@ import React from 'react';
 // components
 import PasswordForm from '../components/user/PasswordForm';
 
-// api
-import changePassword from '../api/password';
 
+const Password = () => (
 
-class Password extends React.Component {
+    <div className="container">
+        <h1>Password</h1>
 
-    constructor(props) {
+        <br />
 
-        super(props);
+        <PasswordForm />
 
-        this.onSubmit = this.onSubmit.bind(this);
+    </div>
 
-    }
-
-    onSubmit(data) {
-
-        changePassword(data).then(
-            (response) => {
-
-                this.props.history.push('/');
-
-            },
-        );
-
-    }
-
-    render() {
-
-        return (
-            <div className="container">
-                <h1>Password</h1>
-
-                <br />
-
-                <PasswordForm
-                    submit={this.onSubmit}
-                />
-
-            </div>
-        );
-
-    }
-
-}
+);
 
 
 export default Password;

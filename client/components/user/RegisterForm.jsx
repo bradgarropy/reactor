@@ -1,11 +1,14 @@
 // react
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // components
 import TextInput from '../common/TextInput';
 import EmailInput from '../common/EmailInput';
 import PasswordInput from '../common/PasswordInput';
+
+// api
+import { createUser } from '../../api/user';
 
 
 class RegisterForm extends React.Component {
@@ -30,7 +33,15 @@ class RegisterForm extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        createUser(this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.history.push('/');
+
+            },
+        );
 
     }
 
@@ -98,7 +109,7 @@ class RegisterForm extends React.Component {
 
 
 RegisterForm.propTypes = {
-    submit: PropTypes.func.isRequired,
+
 };
 
 
@@ -107,4 +118,4 @@ RegisterForm.defaultProps = {
 };
 
 
-export default RegisterForm;
+export default withRouter(RegisterForm);

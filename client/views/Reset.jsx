@@ -4,52 +4,19 @@ import React from 'react';
 // components
 import ResetForm from '../components/user/ResetForm';
 
-// api
-import resetPassword from '../api/reset';
 
+const Reset = () => (
 
-class Reset extends React.Component {
+    <div className="container">
+        <h1>Reset</h1>
 
-    constructor(props) {
+        <br />
 
-        super(props);
+        <ResetForm />
 
-        this.onSubmit = this.onSubmit.bind(this);
+    </div>
 
-    }
-
-    onSubmit(data) {
-
-        const token = this.props.match.params.token;
-
-        resetPassword(token, data).then(
-            (response) => {
-
-                this.props.history.push('/');
-
-            },
-        );
-
-    }
-
-    render() {
-
-        return (
-            <div className="container">
-                <h1>Reset</h1>
-
-                <br />
-
-                <ResetForm
-                    submit={this.onSubmit}
-                />
-
-            </div>
-        );
-
-    }
-
-}
+);
 
 
 export default Reset;
