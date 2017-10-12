@@ -19,6 +19,9 @@ const PasswordInput = props => (
             value={props.value}
             onChange={props.onChange}
         />
+
+        {props.error && <span className="help-block">{props.error.msg}</span>}
+
     </div>
 
 );
@@ -29,6 +32,7 @@ PasswordInput.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string,
+    error: PropTypes.object,
     onChange: PropTypes.func.isRequired,
 };
 
@@ -36,6 +40,7 @@ PasswordInput.propTypes = {
 PasswordInput.defaultProps = {
     placeholder: '',
     value: '',
+    error: {},
 };
 
 

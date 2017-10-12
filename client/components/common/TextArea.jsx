@@ -19,6 +19,9 @@ const TextArea = props => (
             value={props.value}
             onChange={props.onChange}
         />
+
+        {props.error && <span className="help-block">{props.error.msg}</span>}
+
     </div>
 
 );
@@ -30,6 +33,7 @@ TextArea.propTypes = {
     placeholder: PropTypes.string,
     rows: PropTypes.number,
     value: PropTypes.string,
+    error: PropTypes.object,
     onChange: PropTypes.func.isRequired,
 };
 
@@ -38,6 +42,7 @@ TextArea.defaultProps = {
     placeholder: '',
     rows: undefined,
     value: '',
+    error: {},
 };
 
 

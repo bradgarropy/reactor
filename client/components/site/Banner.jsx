@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const Banner = () => (
-    <div className="alert alert-warning development-banner">
+    <div className="alert alert-warning">
         <div className="text-center">
                 This site is under development.
                 Please give us your <a href="/user/feedback">feedback</a>.

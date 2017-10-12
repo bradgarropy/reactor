@@ -23,6 +23,7 @@ class RegisterForm extends React.Component {
             email: '',
             password: '',
             confirmation: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -34,14 +35,21 @@ class RegisterForm extends React.Component {
 
         event.preventDefault();
 
-        createUser(this.state).then(
-            (response) => {
+        createUser(this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -62,6 +70,7 @@ class RegisterForm extends React.Component {
                     name="first_name"
                     placeholder="First Name"
                     value={this.state.first_name}
+                    error={this.state.errors.first_name}
                     onChange={this.onChange}
                 />
 
@@ -70,6 +79,7 @@ class RegisterForm extends React.Component {
                     name="last_name"
                     placeholder="Last Name"
                     value={this.state.last_name}
+                    error={this.state.errors.last_name}
                     onChange={this.onChange}
                 />
 
@@ -78,6 +88,7 @@ class RegisterForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
+                    error={this.state.errors.email}
                     onChange={this.onChange}
                 />
 
@@ -86,6 +97,7 @@ class RegisterForm extends React.Component {
                     name="password"
                     placeholder="Password"
                     value={this.state.password}
+                    error={this.state.errors.password}
                     onChange={this.onChange}
                 />
 
@@ -94,6 +106,7 @@ class RegisterForm extends React.Component {
                     name="confirmation"
                     placeholder="Confirm Password"
                     value={this.state.confirmation}
+                    error={this.state.errors.confirmation}
                     onChange={this.onChange}
                 />
 
