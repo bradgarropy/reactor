@@ -2,10 +2,10 @@
 import React from 'react';
 
 // components
-import WeightForm from '../components/weight/WeightForm';
+import EditWeightForm from '../components/weight/EditWeightForm';
 
 // api
-import { getWeight, updateWeight } from '../api/weight';
+import { getWeight } from '../api/weight';
 
 
 class EditWeight extends React.Component {
@@ -15,10 +15,8 @@ class EditWeight extends React.Component {
         super(props);
 
         this.state = {
-            weight: '',
+            weight: {},
         };
-
-        this.onSubmit = this.onSubmit.bind(this);
 
     }
 
@@ -27,24 +25,10 @@ class EditWeight extends React.Component {
         getWeight(this.props.match.params.id).then(
             (weight) => {
 
-                console.log(weight);
                 this.setState({ weight });
 
             },
         );
-
-    }
-
-
-    onSubmit(data) {
-
-        updateWeight(this.state.weight._id, data).then(
-            (weight) => {
-
-                this.setState({ weight });
-                this.props.history.push('/weight');
-
-            });
 
     }
 
@@ -56,10 +40,10 @@ class EditWeight extends React.Component {
 
                 <br />
 
-                <WeightForm
+                <EditWeightForm
+                    id={this.state.weight._id}
                     date={this.state.weight.date}
                     weight={this.state.weight.weight}
-                    submit={this.onSubmit}
                 />
 
             </div>

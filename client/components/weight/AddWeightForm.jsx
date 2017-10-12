@@ -8,6 +8,9 @@ import moment from 'moment';
 // components
 import Input from '../common/Input';
 
+// api
+import { createWeight } from '../../api/weight';
+
 
 class WeightForm extends React.Component {
 
@@ -16,8 +19,8 @@ class WeightForm extends React.Component {
         super(props);
 
         this.state = {
-            date: props.date,
-            weight: props.weight,
+            date: moment().format('YYYY-MM-DD'),
+            weight: '',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,20 +28,18 @@ class WeightForm extends React.Component {
 
     }
 
-
-    componentWillReceiveProps(props) {
-
-        this.setState({
-            date: moment(props.date).utc().format('YYYY-MM-DD'),
-            weight: props.weight,
-        });
-
-    }
-
     onSubmit(event) {
 
         event.preventDefault();
-        this.props.submit(this.state);
+
+        createWeight(this.state).then(
+            (response) => {
+
+                console.log(response);
+                this.props.submit(response);
+
+            },
+        );
 
     }
 
@@ -82,15 +83,12 @@ class WeightForm extends React.Component {
 
 
 WeightForm.propTypes = {
-    date: PropTypes.string,
-    weight: PropTypes.number,
-    submit: PropTypes.func.isRequired,
+    submit: PropTypes.func,
 };
 
 
 WeightForm.defaultProps = {
-    date: undefined,
-    weight: undefined,
+    submit: undefined,
 };
 
 

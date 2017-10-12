@@ -5,11 +5,11 @@ import React from 'react';
 import _ from 'lodash';
 
 // components
-import WeightForm from '../components/weight/WeightForm';
+import AddWeightForm from '../components/weight/AddWeightForm';
 import WeightEntry from '../components/weight/WeightEntry';
 
 // api
-import { getWeights, createWeight, deleteWeight } from '../api/weight';
+import { getWeights, deleteWeight } from '../api/weight';
 
 
 class Weight extends React.Component {
@@ -35,16 +35,11 @@ class Weight extends React.Component {
 
     }
 
-    onSubmit(data) {
+    onSubmit(weight) {
 
-        createWeight(data).then(
-            (weight) => {
-
-                const weights = this.state.weights.slice();
-                weights.push(weight);
-                this.setState({ weights });
-
-            });
+        const weights = this.state.weights.slice();
+        weights.push(weight);
+        this.setState({ weights });
 
     }
 
@@ -69,7 +64,9 @@ class Weight extends React.Component {
 
                 <br />
 
-                <WeightForm submit={this.onSubmit} />
+                <AddWeightForm
+                    submit={this.onSubmit}
+                />
 
                 <br />
 
