@@ -19,6 +19,7 @@ class FeedbackForm extends React.Component {
         this.state = {
             email: '',
             feedback: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -30,14 +31,21 @@ class FeedbackForm extends React.Component {
 
         event.preventDefault();
 
-        feedback(this.state).then(
-            (response) => {
+        feedback(this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -58,6 +66,7 @@ class FeedbackForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
+                    error={this.state.errors.email}
                     onChange={this.onChange}
                 />
 
@@ -67,6 +76,7 @@ class FeedbackForm extends React.Component {
                     placeholder="Tell us what you think!"
                     rows={8}
                     value={this.state.feedback}
+                    error={this.state.errors.feedback}
                     onChange={this.onChange}
                 />
 

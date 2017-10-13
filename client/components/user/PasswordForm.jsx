@@ -19,6 +19,7 @@ class PasswordForm extends React.Component {
             current_password: '',
             new_password: '',
             confirmation: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -30,14 +31,21 @@ class PasswordForm extends React.Component {
 
         event.preventDefault();
 
-        changePassword(this.state).then(
-            (response) => {
+        changePassword(this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -57,6 +65,7 @@ class PasswordForm extends React.Component {
                     label="Current Password"
                     name="current_password"
                     value={this.state.current_password}
+                    error={this.state.errors.current_password}
                     onChange={this.onChange}
                 />
 
@@ -64,6 +73,7 @@ class PasswordForm extends React.Component {
                     label="New Password"
                     name="new_password"
                     value={this.state.new_password}
+                    error={this.state.errors.new_password}
                     onChange={this.onChange}
                 />
 
@@ -71,6 +81,7 @@ class PasswordForm extends React.Component {
                     label="Confirm Password"
                     name="confirmation"
                     value={this.state.confirmation}
+                    error={this.state.errors.confirmation}
                     onChange={this.onChange}
                 />
 

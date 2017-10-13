@@ -2,12 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// packages
+import classNames from 'classnames';
+
 
 const EmailInput = props => (
 
-    <div className="form-group">
+    <div className={classNames('form-group', { 'has-error': props.error })}>
 
-        <label htmlFor={props.name}>
+        <label className="control-label" htmlFor={props.name}>
             {props.label}
         </label>
 
@@ -38,9 +41,9 @@ EmailInput.propTypes = {
 
 
 EmailInput.defaultProps = {
-    placeholder: '',
-    value: '',
-    error: {},
+    placeholder: undefined,
+    value: undefined,
+    error: undefined,
 };
 
 

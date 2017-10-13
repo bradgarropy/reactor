@@ -23,6 +23,7 @@ class ProfileForm extends React.Component {
             first_name: '',
             last_name: '',
             email: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -50,14 +51,21 @@ class ProfileForm extends React.Component {
 
         const id = userId();
 
-        updateUser(id, this.state).then(
-            (response) => {
+        updateUser(id, this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -78,6 +86,7 @@ class ProfileForm extends React.Component {
                     name="first_name"
                     placeholder="First Name"
                     value={this.state.first_name}
+                    error={this.state.errors.first_name}
                     onChange={this.onChange}
                 />
 
@@ -86,6 +95,7 @@ class ProfileForm extends React.Component {
                     name="last_name"
                     placeholder="Last Name"
                     value={this.state.last_name}
+                    error={this.state.errors.last_name}
                     onChange={this.onChange}
                 />
 
@@ -94,6 +104,7 @@ class ProfileForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
+                    error={this.state.errors.email}
                     onChange={this.onChange}
                 />
 

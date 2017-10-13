@@ -2,12 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// packages
+import classNames from 'classnames';
+
 
 const TextArea = props => (
 
-    <div className="form-group">
+    <div className={classNames('form-group', { 'has-error': props.error })}>
 
-        <label htmlFor={props.name}>
+        <label className="control-label" htmlFor={props.name}>
             {props.label}
         </label>
 
@@ -39,10 +42,10 @@ TextArea.propTypes = {
 
 
 TextArea.defaultProps = {
-    placeholder: '',
+    placeholder: undefined,
     rows: undefined,
-    value: '',
-    error: {},
+    value: undefined,
+    error: undefined,
 };
 
 

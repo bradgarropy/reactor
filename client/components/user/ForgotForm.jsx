@@ -17,6 +17,7 @@ class ForgotForm extends React.Component {
 
         this.state = {
             email: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -28,14 +29,21 @@ class ForgotForm extends React.Component {
 
         event.preventDefault();
 
-        forgot(this.state).then(
-            (response) => {
+        forgot(this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -56,6 +64,7 @@ class ForgotForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
+                    error={this.state.errors.email}
                     onChange={this.onChange}
                 />
 

@@ -18,6 +18,7 @@ class ResetForm extends React.Component {
         this.state = {
             password: '',
             confirmation: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -31,14 +32,21 @@ class ResetForm extends React.Component {
 
         const token = this.props.match.params.token;
 
-        resetPassword(token, this.state).then(
-            (response) => {
+        resetPassword(token, this.state)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -58,6 +66,7 @@ class ResetForm extends React.Component {
                     label="Password"
                     name="password"
                     value={this.state.password}
+                    error={this.state.errors.password}
                     onChange={this.onChange}
                 />
 
@@ -65,6 +74,7 @@ class ResetForm extends React.Component {
                     label="Confirm Password"
                     name="confirmation"
                     value={this.state.confirmation}
+                    error={this.state.errors.confirmation}
                     onChange={this.onChange}
                 />
 

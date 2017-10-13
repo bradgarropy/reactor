@@ -22,6 +22,7 @@ class LoginForm extends React.Component {
         this.state = {
             email: '',
             password: '',
+            errors: {},
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -33,15 +34,22 @@ class LoginForm extends React.Component {
 
         event.preventDefault();
 
-        login(this.state).then(
-            (response) => {
+        login(this.state)
+            .then((response) => {
 
                 localStorage.setItem('token', response.token);
                 axios.defaults.headers.common.Authorization = `Bearer ${response.token}`;
                 this.props.history.push('/');
 
-            },
-        );
+            })
+            .catch((error) => {
+
+                const errors = error.response.data.errors;
+
+                console.log(errors);
+                this.setState({ errors });
+
+            });
 
     }
 
@@ -62,6 +70,7 @@ class LoginForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     value={this.state.email}
+                    error={this.state.errors.email}
                     onChange={this.onChange}
                 />
 
@@ -70,6 +79,7 @@ class LoginForm extends React.Component {
                     name="password"
                     placeholder="Password"
                     value={this.state.password}
+                    error={this.state.errors.password}
                     onChange={this.onChange}
                 />
 
