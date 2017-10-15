@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 
 // packages
 import axios from 'axios';
-
-// components
-import Banner from './Banner';
-
 // utils
 import { isAuthenticated, userFirstName } from '../../utils/authentication';
 
@@ -37,8 +33,6 @@ class Navigation extends React.Component {
 
         const authenticated = (
             <div className="container-fluid">
-
-                <Banner />
 
                 <ul className="nav navbar-nav">
                     <li>
@@ -98,6 +92,7 @@ class Navigation extends React.Component {
         );
 
         return (
+
             <div id="navigation">
 
                 <nav className="navbar navbar-default">

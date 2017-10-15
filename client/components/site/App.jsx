@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 // components
 import Login from '../../views/Login';
 import Reset from '../../views/Reset';
+import Banner from './Banner';
 import Forgot from '../../views/Forgot';
 import Weight from '../../views/Weight';
 import Profile from '../../views/Profile';
@@ -19,6 +20,9 @@ import EditWeight from '../../views/EditWeight';
 const App = () => (
 
     <div id="app">
+
+        {process.env.NODE_ENV === 'development' && <Banner />}
+
         <Route path="/" component={Navigation} />
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login" component={Login} />
@@ -30,6 +34,7 @@ const App = () => (
         <Route exact path="/register" component={Register} />
         <Route exact path="/edit/:id" component={EditWeight} />
         <Route exact path="/reset/:token" component={Reset} />
+
     </div>
 
 );

@@ -4,10 +4,10 @@
   "description": "No idea what this will be...",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development && webpack-dev-server --open",
-    "prod": "set NODE_ENV=production && webpack-dev-server --open",
-    "build-dev": "set NODE_ENV=development && webpack",
-    "build-prod": "set NODE_ENV=production && webpack -p"
+    "dev": "set NODE_ENV=development&& webpack-dev-server --open",
+    "prod": "set NODE_ENV=production&& webpack-dev-server --open",
+    "build-dev": "set NODE_ENV=development&& webpack",
+    "build-prod": "set NODE_ENV=production&& webpack -p"
   },
   "repository": {
     "type": "git",
