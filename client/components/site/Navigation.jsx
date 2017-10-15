@@ -38,6 +38,8 @@ class Navigation extends React.Component {
         const authenticated = (
             <div className="container-fluid">
 
+                <Banner />
+
                 <ul className="nav navbar-nav">
                     <li>
                         <Link to="/">

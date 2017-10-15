@@ -37,8 +37,10 @@ class LoginForm extends React.Component {
         login(this.state)
             .then((response) => {
 
-                localStorage.setItem('token', response.token);
-                axios.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+                const token = response.data.token;
+
+                localStorage.setItem('token', token);
+                axios.defaults.headers.common.Authorization = `Bearer ${token}`;
                 this.props.history.push('/');
 
             })
@@ -46,7 +48,6 @@ class LoginForm extends React.Component {
 
                 const errors = error.response.data.errors;
 
-                console.log(errors);
                 this.setState({ errors });
 
             });
