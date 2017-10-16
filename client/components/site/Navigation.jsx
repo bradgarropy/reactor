@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 // packages
 import axios from 'axios';
+
 // utils
 import { isAuthenticated, userFirstName } from '../../utils/authentication';
 
