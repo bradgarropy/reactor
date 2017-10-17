@@ -51,14 +51,13 @@ class EditWeightForm extends React.Component {
         };
 
 
-        updateWeight(this.state.id, data).then(
-            (response) => {
+        updateWeight(this.state.id, data)
+            .then((response) => {
 
                 console.log(response);
                 this.props.history.push('/weight');
 
-            },
-        );
+            });
 
     }
 

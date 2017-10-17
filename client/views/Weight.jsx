@@ -29,9 +29,13 @@ class Weight extends React.Component {
 
     componentDidMount() {
 
-        getWeights().then(
-            weights => this.setState({ weights }),
-        );
+        getWeights()
+            .then((response) => {
+
+                const weights = response.data;
+                this.setState({ weights });
+
+            });
 
     }
 
@@ -45,14 +49,15 @@ class Weight extends React.Component {
 
     handleDelete(id) {
 
-        deleteWeight(id).then(
-            (weight) => {
+        deleteWeight(id)
+            .then((response) => {
+
+                const weight = response.data;
 
                 const weights = this.state.weights.filter(item => !_.isEqual(item, weight));
                 this.setState({ weights });
 
-            },
-        );
+            });
 
     }
 

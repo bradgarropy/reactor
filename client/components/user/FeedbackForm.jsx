@@ -8,6 +8,10 @@ import TextArea from '../common/TextArea';
 
 // api
 import feedback from '../../api/feedback';
+import { getUser } from '../../api/user';
+
+// utils
+import { userId } from '../../utils/authentication';
 
 
 class FeedbackForm extends React.Component {
@@ -24,6 +28,20 @@ class FeedbackForm extends React.Component {
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+
+    }
+
+    componentDidMount() {
+
+        const id = userId();
+
+        getUser(id)
+            .then((response) => {
+
+                const user = response.data;
+                this.setState({ email: user.email });
+
+            });
 
     }
 

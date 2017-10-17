@@ -32,14 +32,15 @@ class WeightForm extends React.Component {
 
         event.preventDefault();
 
-        createWeight(this.state).then(
-            (response) => {
+        createWeight(this.state)
+            .then((response) => {
 
-                console.log(response);
-                this.props.submit(response);
+                const weight = response.data;
 
-            },
-        );
+                console.log(weight);
+                this.props.submit(weight);
+
+            });
 
     }
 

@@ -22,13 +22,13 @@ class EditWeight extends React.Component {
 
     componentDidMount() {
 
-        getWeight(this.props.match.params.id).then(
-            (weight) => {
+        getWeight(this.props.match.params.id)
+            .then((response) => {
 
+                const weight = response.data;
                 this.setState({ weight });
 
-            },
-        );
+            });
 
     }
 

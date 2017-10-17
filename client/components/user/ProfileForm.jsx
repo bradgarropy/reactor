@@ -35,13 +35,17 @@ class ProfileForm extends React.Component {
 
         const id = userId();
 
-        getUser(id).then(
-            user => this.setState({
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-            }),
-        );
+        getUser(id)
+            .then((response) => {
+
+                const user = response.data;
+                this.setState({
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email,
+                });
+
+            });
 
     }
 
