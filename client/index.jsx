@@ -9,6 +9,8 @@ import axios from 'axios';
 // components
 import App from './components/site/App';
 
+// styles
+import './styles/style.css';
 
 const token = localStorage.getItem('token');
 
