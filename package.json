@@ -9,6 +9,7 @@
     "build-dev": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
     "deploy": "gh-pages -d dist",
+    "postinstall": "webpack --config webpack.prod.js",
     "start": "node server/server.js"
   },
   "repository": {
