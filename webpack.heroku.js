@@ -6,8 +6,8 @@ const webpack = require('webpack');
 const config = merge(common, {
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development'),
-            'process.env.API_URL': JSON.stringify('https://weighter-api-dev.herokuapp.com'),
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            'process.env.API_URL': JSON.stringify(process.env.API_URL),
         }),
     ],
 });
