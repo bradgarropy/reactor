@@ -22,6 +22,5 @@ app.get('*', (request, response) => {
 app.listen(process.env.PORT, () => {
 
     console.log('Server listening on port %s.', process.env.PORT);
-    console.log(process.env);
 
 });
