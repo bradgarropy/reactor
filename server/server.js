@@ -18,13 +18,9 @@ app.get('*', (request, response) => {
 });
 
 
-// port
-const port = process.env.PORT || 8080;
-
-
 // start application
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
 
-    console.log('Server listening on port %s.', port);
+    console.log('Server listening on port %s.', process.env.PORT);
 
 });
