@@ -10,6 +10,8 @@ class Welcome extends React.Component {
 
     render() {
 
+        console.log(process.env.API_URL);
+
         const user = userInfo();
 
         const authenticated = (
