@@ -1,8 +1,8 @@
 {
   "name": "weighter-react",
   "version": "0.0.1",
-  "description": "No idea what this will be...",
-  "main": "index.js",
+  "description": "Web application to track your weight over time!",
+  "main": "server.js",
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "prod": "webpack-dev-server --open --config webpack.prod.js",
@@ -16,7 +16,21 @@
     "url": "git+https://github.com/bradgarropy/weighter-react.git"
   },
   "keywords": [
-    "react"
+    "javascript",
+    "jsx",
+    "node",
+    "nodejs",
+    "express",
+    "expressjs",
+    "web-app",
+    "web-application",
+    "react",
+    "reactjs",
+    "react-router",
+    "webpack",
+    "babel",
+    "eslint",
+    "axios"
   ],
   "author": "Brad Garropy",
   "license": "ISC",
