@@ -11,6 +11,7 @@ const config = merge(common, {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.API_URL': JSON.stringify('https://weighter-api.herokuapp.com/'),
         }),
     ],
 });

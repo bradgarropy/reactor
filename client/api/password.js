@@ -4,6 +4,6 @@ import axios from 'axios';
 
 export default function changePassword(data) {
 
-    return axios.post('http://localhost:3000/api/password', data);
+    return axios.post(`${process.env.API_URL}/api/password`, data);
 
 }
