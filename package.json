@@ -30,7 +30,9 @@
     "webpack",
     "babel",
     "eslint",
-    "axios"
+    "axios",
+    "jwt",
+    "jsonwebtoken"
   ],
   "author": "Brad Garropy",
   "license": "ISC",
